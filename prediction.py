@@ -20,14 +20,18 @@ def predict_image(img_string):
     prediction.setModelPath(os.path.join(execution_path, "DenseNet-BC-121-32.h5"))
     prediction.loadModel()
 
-    decode_image(img_string)
+    try:
+        decode_image(img_string)
+    except Exception as e:
+        print(e)
+        return {'status': 'invalid image data'}
     img_path = os.path.join(execution_path, "image.jpg")
     try:
         predictions, probabilities = prediction.predictImage(img_path, result_count=5)
         return dict(zip(predictions, probabilities))
     except Exception as e:
         print(e)
-        return {'status': 'invalid image data'}
+        return {'status': 'unable to predict'}
 
 
 
