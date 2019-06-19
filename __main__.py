@@ -20,6 +20,9 @@ def image():
         p = prediction.predict_image(data['image'])
         return jsonify(p)
 
+    return "ok"
 
-app.run(host=HOST, port=PORT)
+
+if __name__ == '__main__':
+    app.run(host=HOST, port=PORT, debug=True)
 
