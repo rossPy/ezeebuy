@@ -27,8 +27,11 @@ def predict_image(img_string):
         return {'status': 'invalid image data'}
     img_path = os.path.join(execution_path, "image.jpg")
     try:
-        predictions, probabilities = prediction.predictImage(img_path, result_count=5)
-        return dict(zip(predictions, probabilities))
+        predictions, _ = prediction.predictImage(img_path, result_count=1)
+        return_dict = dict()
+        return_dict['image'] = predictions[0]
+        return_dict['status'] = 'SUCCESS'
+        return return_dict
     except Exception as e:
         print(e)
         return {'status': 'unable to predict'}
