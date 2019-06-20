@@ -16,8 +16,8 @@ def decode_image(img_string, filename="image.jpg"):
 def predict_image(img_string):
 
     prediction = ImagePrediction()
-    prediction.setModelTypeAsDenseNet()
-    prediction.setModelPath(os.path.join(execution_path, "DenseNet-BC-121-32.h5"))
+    prediction.setModelTypeAsResNet()
+    prediction.setModelPath(os.path.join(execution_path, "resnet50_weights_tf_dim_ordering_tf_kernels.h5"))
     prediction.loadModel()
 
     try:
